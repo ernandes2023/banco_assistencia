@@ -22,7 +22,7 @@ create table produto
 id_prod int auto_increment primary key,
 nome_prod varchar(55) not null,
 cliente_id int,
-foreign key (cliente_id) references cliente (id_cliente)
+foreign key(cliente_id)references cliente(id_cliente)
 );
 
 create table componente
@@ -33,10 +33,12 @@ nome_comp varchar(55) not null
 
 create table prod_comp
 (
-id int auto_increment primary key,
-prod_qtd int,
+prod_id int,
+comp_id int,
 qtd int not null,
-foreign key (prod_qtd) references componente (id_comp)
+primary key(prod_id,comp_id),
+foreign key(prod_id)references produto(id_prod),
+foreign key(comp_id)references componente(id_comp)
 );
 
 create table manutencao
@@ -54,7 +56,7 @@ causas varchar(55) not null,
 versao_anterior float not null,
 versao_atual float not null,
 primary key (comp_id, prod_id, tec_id),
-foreign key(comp_id) references prod_comp (id),
+foreign key(comp_id) references componente (id_comp),/*Essa linha que foi mudada*/
 foreign key(prod_id) references produto (id_prod),
 foreign key(tec_id) references tecnico (id_tec),
 foreign key(cliente_id) references cliente (id_cliente)
@@ -74,6 +76,4 @@ inner join produto on prod_id = id_prod
 inner join tecnico on tec_id = id_tec
 inner join componente on comp_id  = id_comp 
 inner join prod_comp on comp_id = id
-inner join cliente on cliente_id = id_cliente;
-
-select * from manutencao*/
+inner join cliente on cliente_id = id_cliente;*/
