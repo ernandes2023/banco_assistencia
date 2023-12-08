@@ -14,7 +14,10 @@ senha varchar(20) not null
 create table cliente
 (
 id_cliente int auto_increment primary key,
-nome_cliente varchar(55) not null
+nome_cliente varchar(55) not null,
+telefone_cliente char(14) not null,
+email_cliente varchar(55) not null,
+senha varchar(20) not null
 );
 
 create table produto
@@ -76,4 +79,5 @@ inner join produto on prod_id = id_prod
 inner join tecnico on tec_id = id_tec
 inner join componente on comp_id  = id_comp 
 inner join prod_comp on comp_id = id
+inner join cliente on cliente_id = id_cliente;*/
 inner join cliente on cliente_id = id_cliente;*/
